@@ -1,8 +1,4 @@
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -24,6 +20,52 @@
             --bot-green: #27ae60;
         }
 
+/* زر الرجوع - سهم متموج بدون خلفية */
+.close-x {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #333 !important;
+    font-size: 36px !important;
+    font-weight: normal !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: 1 !important;
+    padding: 10px !important;
+    transition: transform 0.3s ease !important;
+    animation: waveArrow 2s infinite ease-in-out !important;
+    transform-origin: center !important;
+}
+
+/* إزالة محتوى قبل وبعد */
+.close-x::before,
+.close-x::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* حركة التموج */
+@keyframes waveArrow {
+    0%, 100% {
+        transform: translateX(0) scale(1);
+    }
+    25% {
+        transform: translateX(-5px) scale(1.1);
+    }
+    50% {
+        transform: translateX(5px) scale(1.1);
+    }
+    75% {
+        transform: translateX(-2px) scale(1.05);
+    }
+}
+
+/* تأثير hover */
+.close-x:hover {
+    transform: scale(1.2) !important;
+    animation: none !important;
+    color: #000 !important;
+}
     
     /* تصميم مربعين داخل مربع خارجي شفاف */
 .designer-container {
@@ -94,32 +136,7 @@
     text-decoration: none;
 }
     
-   /* زر الرجوع - سهم ثابت بدون خلفية */
-.close-x {
-  
-    border: none !important;
-    box-shadow: none !important;
-    color: #333 !important;
-    font-size: 36px !important;
-    font-weight: normal !important;
-    width: auto !important;
-    height: auto !important;
-    line-height: 1 !important;
-    padding: 10px !important;
-    transition: color 0.2s ease !important;
-}
-
-/* إزالة أي تأثيرات أو حركات سابقة */
-.close-x::before,
-.close-x::after {
-    display: none !important;
-    content: none !important;
-}
-
-/* تغيير اللون عند المرور فقط */
-.close-x:hover {
-    color: #000 !important;
-} 
+    
 /* تثبيت الهيدر ومنع الزحف */
 header {
     position: fixed !important;
@@ -5250,7 +5267,7 @@ header { position: fixed !important; width: 100% !important; z-index: 1000 !impo
     <i class="fas fa-gamepad">لعب ودي</i>
 </a>   
         <a href="https://markit5.netlify.app/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%); color: white; text-decoration: none; border-radius: 12px; font-family: Arial, sans-serif; font-weight: bold; box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3); transition: transform 0.2s, box-shadow 0.2s;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="45" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="44" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
   </svg>
   متجر تطبيقات أمان
@@ -5265,7 +5282,7 @@ header { position: fixed !important; width: 100% !important; z-index: 1000 !impo
        
        
     <a onclick="showModal('adsModal'); closeNav();"><i class="fas fa-ad"></i> الإعلانات</a>
-        <a onclick="showModal('reportsModal'); closeNav();"><i class="fas fa-file-alt"></i>  السحوبات</a>
+        <a onclick="showModal('reportsModal'); closeNav();"><i class="fas fa-file-alt"></i> تقارير السحب</a>
 
 <a href="javascript:void(0)" onclick="openNotificationsModal()" style="position: relative;">
     <i class="fas fa-bell"></i> الإشعارات
@@ -7494,8 +7511,7 @@ header { position: fixed !important; width: 100% !important; z-index: 1000 !impo
                 transition: all 0.3s ease;" 
                 placeholder=" أدخل اسمك ثلاثي ">
         </div>
-		
-        <div class="form-group" style="
+		     <div class="form-group" style="
             margin-bottom: 25px;
             background: linear-gradient(145deg, #f8f9fa, #e9ecef);
             border-radius: 15px;
@@ -7508,6 +7524,30 @@ header { position: fixed !important; width: 100% !important; z-index: 1000 !impo
                 font-weight: 700;
                 color: #495057;
                 font-size: 1.1rem;">رقم البطاقة</label>
+            <input type="tex" id="wCardImg" style="
+                width: 100%;
+                padding: 14px 18px;
+                border: 2px solid #ced4da;
+                border-radius: 12px;
+                font-size: 1rem;
+                font-weight: 600;
+                background: white;
+                transition: all 0.3s ease;" 
+                placeholder="اكتب رقم بطاقتك">
+        </div>
+        <div class="form-group" style="
+            margin-bottom: 25px;
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid #dee2e6;
+            transition: all 0.3s ease;">
+            <label style="
+                display: block;
+                margin-bottom: 10px;
+                font-weight: 700;
+                color: #495057;
+                font-size: 1.1rem;">المحافضة</label>
             <input type="text" id="wName" style="
                 width: 100%;
                 padding: 14px 18px;
@@ -7517,7 +7557,7 @@ header { position: fixed !important; width: 100% !important; z-index: 1000 !impo
                 font-weight: 600;
                 background: white;
                 transition: all 0.3s ease;" 
-                placeholder=" أدخل رقم البطاقة ">
+                placeholder=" بغداد/بصره/اربيل ">
         </div>
         
         <div class="form-group" style="
@@ -7545,30 +7585,7 @@ header { position: fixed !important; width: 100% !important; z-index: 1000 !impo
                 placeholder="example@email.com">
         </div>
         
-        <div class="form-group" style="
-            margin-bottom: 25px;
-            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
-            border-radius: 15px;
-            padding: 20px;
-            border: 2px solid #dee2e6;
-            transition: all 0.3s ease;">
-            <label style="
-                display: block;
-                margin-bottom: 10px;
-                font-weight: 700;
-                color: #495057;
-                font-size: 1.1rem;">المحافظة</label>
-            <input type="tex" id="wCardImg" style="
-                width: 100%;
-                padding: 14px 18px;
-                border: 2px solid #ced4da;
-                border-radius: 12px;
-                font-size: 1rem;
-                font-weight: 600;
-                background: white;
-                transition: all 0.3s ease;" 
-                placeholder="بغداد/بصره/اربيل">
-        </div>
+   
         
         <div class="form-group" style="
             margin-bottom: 30px;
